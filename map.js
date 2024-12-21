@@ -25,8 +25,11 @@ const truthValuesOf = function (numbers) {
 };
 
 // reverse strings of ["hello", "world"] => ["olleh", "dlrow"]
+const reverse = function (element) {
+  return element.reverse().join("");
+};
 const reversedStringsOf = function (strings) {
-  return strings.map(function (word) { return [...word].reverse().join(""); });
+  return strings.map(function (word) { return reverse([...word]); });
 };
 
 // double letters of ["cat", "dog", "bat"] => ["ccaatt", "ddoogg", "bbaatt"]
@@ -107,8 +110,15 @@ const withoutVowelsOf = function (strings) {
 // // Example: cumulative sum of [1, 2, 3] is [1, 1+2, 1+2+3]
 // const cumulativeSumsOf = function (arrays) { };
 
-// // reverse words in ["hello world", "goodbye moon"] => ["olleh dlrow", "eybdoog noom"]
-// const reversedWordsOf = function (strings) { };
+// reverse words in ["hello world", "goodbye moon"] => ["olleh dlrow", "eybdoog noom"]
+
+const reversedWordsOf = function (strings) {
+  return strings.map(function (string) {
+    return string.split(" ").map(function (string) {
+      return reverse([...string]);
+    }).join(" ");
+  });
+};
 
 // // extract unique characters from ["apple", "banana", "grape"] => ["apl", "ban", "gra"]
 // // Maintain the order of their first appearance in each string
