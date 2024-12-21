@@ -83,11 +83,25 @@ const countVowelsOf = function (strings) {
   return strings.map(countVowels);
 };
 
-// // reverse arrays of [[1, 2, 3], [4, 5, 6]] => [[3, 2, 1], [6, 5, 4]]
-// const reversedArraysOf = function (arrays) { };
+// reverse arrays of [[1, 2, 3], [4, 5, 6]] => [[3, 2, 1], [6, 5, 4]]
+const reversedArraysOf = function (arrays) {
+  return arrays.map(function (array) {
+    return array.reverse();
+  });
+};
 
-// // remove vowels from ["apple", "banana", "grape"] => ["ppl", "bnn", "grp"]
-// const withoutVowelsOf = function (strings) { };
+// remove vowels from ["apple", "banana", "grape"] => ["ppl", "bnn", "grp"]
+const invert = function (f) {
+  return function (...args) {
+    return !f(...args);
+  };
+};
+
+const withoutVowelsOf = function (strings) {
+  return strings.map(function (string) {
+    return [...string].filter(invert(isCharVowel)).join("");
+  });
+};
 
 // // cumulative sums of [[1, 2, 3], [4, 5, 6]] => [[1, 3, 6], [4, 9, 15]]
 // // Example: cumulative sum of [1, 2, 3] is [1, 1+2, 1+2+3]
