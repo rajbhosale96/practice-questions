@@ -72,8 +72,12 @@ const domainNamesOf = function (emails) {
   });
 };
 
-// // split words in ["hello world", "goodbye moon"] => [["hello", "world"], ["goodbye", "moon"]]
-// const splitWordsOf = function (strings) { };
+// split words in ["hello world", "goodbye moon"] => [["hello", "world"], ["goodbye", "moon"]]
+const splitWordsOf = function (strings) {
+  return strings.map(function (string) {
+    return string.split(" ");
+  });
+};
 
 // // join arrays of [["a", "b"], ["c", "d"]] => ["ab", "cd"]
 // const joinedArraysOf = function (arrayOfArrays) { };
