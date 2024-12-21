@@ -45,7 +45,7 @@ const reversedStringsOf = function (strings) {
 const doubleLettersOf = function (strings) {
   return strings.map(function (string) {
     return [...string].map(function (char) {
-      return char + char;
+      return char.repeat(2);
     }).join("");
   });
 };
@@ -86,8 +86,12 @@ const joinedArraysOf = function (arrayOfArrays) {
   });
 };
 
-// // repeat strings in ["hi", "bye"] => ["hihi", "byebye"]
-// const repeatedStringsOf = function (strings) { };
+// repeat strings in ["hi", "bye"] => ["hihi", "byebye"]
+const repeatedStringsOf = function (strings) {
+  return strings.map(function (string) {
+    return string.repeat(2);
+  });
+};
 
 // // count vowels in ["apple", "banana", "grape"] => [2, 3, 2]
 // const countVowelsOf = function (strings) { };
