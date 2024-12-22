@@ -29,14 +29,18 @@ const reverse = function (element) {
   return element.reverse().join("");
 };
 const reversedStringsOf = function (strings) {
-  return strings.map(function (word) { return reverse([...word]); });
+  return strings.map(function (element) { return reverse([...element]); });
 };
 
 // double letters of ["cat", "dog", "bat"] => ["ccaatt", "ddoogg", "bbaatt"]
+
+const repeat = function (element, times) {
+  return element.repeat(times);
+};
 const doubleLettersOf = function (strings) {
-  return strings.map(function (string) {
-    return [...string].map(function (char) {
-      return char.repeat(2);
+  return strings.map(function (element) {
+    return [...element].map(function (char) {
+      return repeat(char, 2);
     }).join("");
   });
 };
@@ -59,7 +63,7 @@ const domainNamesOf = function (emails) {
 
 // split words in ["hello world", "goodbye moon"] => [["hello", "world"], ["goodbye", "moon"]]
 const splitWordsOf = function (strings) {
-  return strings.map(function (string) { return string.split(" "); });
+  return strings.map(function (element) { return element.split(" "); });
 };
 
 // join arrays of [["a", "b"], ["c", "d"]] => ["ab", "cd"]
@@ -69,7 +73,7 @@ const joinedArraysOf = function (arrayOfArrays) {
 
 // repeat strings in ["hi", "bye"] => ["hihi", "byebye"]
 const repeatedStringsOf = function (strings) {
-  return strings.map(function (string) { return string.repeat(2); });
+  return strings.map(function (element) { return element.repeat(2); });
 };
 
 // count vowels in ["apple", "banana", "grape"] => [2, 3, 2]
@@ -88,8 +92,8 @@ const countVowelsOf = function (strings) {
 
 // reverse arrays of [[1, 2, 3], [4, 5, 6]] => [[3, 2, 1], [6, 5, 4]]
 const reversedArraysOf = function (arrays) {
-  return arrays.map(function (array) {
-    return array.reverse();
+  return arrays.map(function (elements) {
+    return elements.reverse();
   });
 };
 
@@ -101,8 +105,8 @@ const invert = function (f) {
 };
 
 const withoutVowelsOf = function (strings) {
-  return strings.map(function (string) {
-    return [...string].filter(invert(isCharVowel)).join("");
+  return strings.map(function (element) {
+    return [...element].filter(invert(isCharVowel)).join("");
   });
 };
 
@@ -113,8 +117,8 @@ const withoutVowelsOf = function (strings) {
 // reverse words in ["hello world", "goodbye moon"] => ["olleh dlrow", "eybdoog noom"]
 
 const reversedWordsOf = function (strings) {
-  return strings.map(function (string) {
-    return string.split(" ").map(function (string) {
+  return strings.map(function (elements) {
+    return elements.split(" ").map(function (string) {
       return reverse([...string]);
     }).join(" ");
   });
