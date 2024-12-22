@@ -1,30 +1,51 @@
 // sumOf([1, 2, 3, 4]) => 10
+const add = function (num1, num2) {
+  return num1 + num2;
+};
+
 const sumOf = function (numbers) {
-  return numbers.reduce(function (sum, number) {
-    return sum + number;
-  }, 0);
+  return numbers.reduce(add, 0);
 };
 
 // productOf([1, 2, 3, 4]) => 24
+const multiply = function (num1, num2) {
+  return num1 * num2;
+};
+
 const productOf = function (numbers) {
-  return numbers.reduce(function (product, number) {
-    return product * number;
-  }, 1);
+  return numbers.reduce(multiply, 1);
 };
 
 // averageOf([1, 2, 3, 4, 5]) => 3
-const averageOf = function (numbers) { 
+const averageOf = function (numbers) {
   return sumOf(numbers) / numbers.length;
 };
 
 // minOf([3, 1, 4, 1, 5, 9, 2]) => 1
-const minOf = function (numbers) { };
+const min = function (num1, num2) {
+  return Math.min(num1, num2);
+};
+
+const minOf = function (numbers) {
+  return numbers.reduce(min, Infinity);
+};
 
 // maxOf([3, 1, 4, 1, 5, 9, 2]) => 9
-const maxOf = function (numbers) { };
+const max = function (num1, num2) {
+  return Math.max(num1, num2);
+};
+
+const maxOf = function (numbers) {
+  return numbers.reduce(max, -Infinity);
+};
 
 // sumPositiveNumbers([1, -2, 3, -4]) => 4
-const sumPositiveNumbers = function (numbers) { };
+const isPositive = function (number) {
+  return number > 0;
+};
+const sumPositiveNumbers = function (numbers) {
+  return sumOf(numbers.filter(isPositive));
+};
 
 // sumOfSquares([1, 2, 3, 4]) => 30
 const sumOfSquares = function (numbers) { };
