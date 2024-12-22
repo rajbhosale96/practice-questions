@@ -10,13 +10,29 @@ const filterEvenNumbers = function (numbers) {
 const filterLongWords = function (words) { };
 
 // people older than 30 [{name: "Alice", age: 25}, {name: "Bob", age: 35}] => [{name: "Bob", age: 35}]
-const filterAdults = function (people) { };
+const isGreaterThan = function (init) {
+  return function (element) {
+    return element > init;
+  };
+};
+
+const filterAdults = function (people) {
+  const isGreaterThan30 = isGreaterThan(30);
+
+  return people.filter(function (person) {
+    return isGreaterThan30(person.age);
+  });
+};
 
 // active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
 const filterActiveUsers = function (users) { };
 
 // numbers greater than 10 [5, 12, 7, 18, 3] => [12, 18]
-const filterNumbersGreaterThanTen = function (numbers) { };
+const filterNumbersGreaterThanTen = function (numbers) {
+  const isGreaterThan10 = isGreaterThan(10);
+
+  return numbers.filter(isGreaterThan10);
+};
 
 // books with more than 200 pages [{title: "Book 1", pages: 150}, {title: "Book 2", pages: 250}] => [{title: "Book 2", pages: 250}]
 const filterLongBooks = function (books) { };
