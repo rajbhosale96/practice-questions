@@ -108,6 +108,7 @@ const filterBirthdaysThisMonth = function (people) { };
 const sumOfAmount = function (sumOf, order) {
   return sumOf + order.amount;
 };
+
 const filterHighValueOrders = function (orders) {
   const averagePrice = orders.reduce(sumOfAmount, 0) / orders.length;
   const isGreaterThanAverage = isGreaterThan(averagePrice);
