@@ -1,14 +1,16 @@
 // sumOf([1, 2, 3, 4]) => 10
-const sum = function (num1, num2) {
-  return num1 + num2;
-};
-
 const sumOf = function (numbers) {
-  return numbers.reduce(sum, 0);
+  return numbers.reduce(function (sum, number) {
+    return sum + number;
+  }, 0);
 };
 
 // productOf([1, 2, 3, 4]) => 24
-const productOf = function (numbers) { };
+const productOf = function (numbers) {
+  return numbers.reduce(function (product, number) {
+    return product * number;
+  }, 1);
+};
 
 // averageOf([1, 2, 3, 4, 5]) => 3
 const averageOf = function (numbers) { };
