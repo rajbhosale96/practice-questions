@@ -76,12 +76,12 @@ const isLessThan = function (init) {
   };
 };
 
-const sum = function (sumOf, product) {
+const sumOfPrices = function (sumOf, product) {
   return sumOf + product.price;
 };
 
 const filterBelowAveragePrice = function (products) {
-  const averagePrice = products.reduce(sum, 0) / products.length;
+  const averagePrice = products.reduce(sumOfPrices, 0) / products.length;
   const isLessThanAverage = isLessThan(averagePrice);
 
   return products.filter(function (product) {
@@ -105,7 +105,17 @@ const filterStudentsWithAllSubjectsPassed = function (students) {
 const filterBirthdaysThisMonth = function (people) { };
 
 // orders that exceed the average order value [{orderId: 1, amount: 20}, {orderId: 2, amount: 50}, {orderId: 3, amount: 10}] => [{orderId: 2, amount: 50}]
-const filterHighValueOrders = function (orders) { };
+const sumOfAmount = function (sumOf, order) {
+  return sumOf + order.amount;
+};
+const filterHighValueOrders = function (orders) {
+  const averagePrice = orders.reduce(sumOfAmount, 0) / orders.length;
+  const isGreaterThanAverage = isGreaterThan(averagePrice);
+
+  return orders.filter(function (order) {
+    return isGreaterThanAverage(order.amount);
+  });
+};
 
 // books with reviews higher than the average rating [{title: "Book 1", rating: 4}, {title: "Book 2", rating: 5}, {title: "Book 3", rating: 3}] => [{title: "Book 2", rating: 5}]
 const filterTopRatedBooks = function (books) { };
