@@ -60,29 +60,23 @@ const filterBelowAveragePrice = function (products) {
 const filterRecentActiveUsers = function (users) { };
 
 // students who passed all subjects [{name: "John", subjects: [{name: "Math", passed: true}, {name: "Science", passed: true}]}, {name: "Jane", subjects: [{name: "Math", passed: false}, {name: "Science", passed: true}]}] => [{name: "John", subjects: [{name: "Math", passed: true}, {name: "Science", passed: true}]}]
+const isPassed = (subject) => subject.passed;
+
 const filterStudentsWithAllSubjectsPassed = function (students) {
-  return students.filter(function (student) {
-    return student.subjects.every(function (subject) {
-      return subject.passed;
-    });
-  });
+  return students.filter(student => student.subject.every(isPassed));
 };
 
 // people whose birthday is this month [{name: "Alice", birthDate: "2024-12-01"}, {name: "Bob", birthDate: "2024-11-01"}] => [{name: "Alice", birthDate: "2024-12-01"}]
 const filterBirthdaysThisMonth = function (people) { };
 
 // orders that exceed the average order value [{orderId: 1, amount: 20}, {orderId: 2, amount: 50}, {orderId: 3, amount: 10}] => [{orderId: 2, amount: 50}]
-const sumOfAmount = function (sumOf, order) {
-  return sumOf + order.amount;
-};
+const sumOfAmount = (sumOf, order) => sumOf + order.amount;
 
 const filterHighValueOrders = function (orders) {
-  const averagePrice = orders.reduce(sumOfAmount, 0) / orders.length;
-  const isGreaterThanAverage = isGreaterThan(averagePrice);
+  const sum = orders.reduce(sumOfAmount, 0);
+  const averagePrice = sum / orders.length;
 
-  return orders.filter(function (order) {
-    return isGreaterThanAverage(order.amount);
-  });
+  return orders.filter(order => order.amount > averagePrice);
 };
 
 // books with reviews higher than the average rating [{title: "Book 1", rating: 4}, {title: "Book 2", rating: 5}, {title: "Book 3", rating: 3}] => [{title: "Book 2", rating: 5}]
