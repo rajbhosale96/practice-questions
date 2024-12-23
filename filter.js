@@ -1,7 +1,6 @@
 // even numbers [1, 2, 3, 4, 5] => [2, 4]
-const isEven = function (number) {
-  return number % 2 === 0;
-};
+const isEven = number => number % 2 === 0;
+
 const filterEvenNumbers = function (numbers) {
   return numbers.filter(isEven);
 };
@@ -10,83 +9,51 @@ const filterEvenNumbers = function (numbers) {
 const filterLongWords = function (words) { };
 
 // people older than 30 [{name: "Alice", age: 25}, {name: "Bob", age: 35}] => [{name: "Bob", age: 35}]
-const isGreaterThan = function (init) {
-  return function (element) {
-    return element > init;
-  };
-};
-
 const filterAdults = function (people) {
-  const isGreaterThan30 = isGreaterThan(30);
-
-  return people.filter(function (person) {
-    return isGreaterThan30(person.age);
-  });
+  return people.filter(person => person.age > 30);
 };
 
 // active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
 const filterActiveUsers = function (users) {
-  return users.filter(function (user) { return user.active; });
+  return users.filter(user => user.active);
 };
 
 // numbers greater than 10 [5, 12, 7, 18, 3] => [12, 18]
 const filterNumbersGreaterThanTen = function (numbers) {
-  const isGreaterThan10 = isGreaterThan(10);
-
-  return numbers.filter(isGreaterThan10);
+  return numbers.filter(number => number > 10);
 };
 
 // books with more than 200 pages [{title: "Book 1", pages: 150}, {title: "Book 2", pages: 250}] => [{title: "Book 2", pages: 250}]
 const filterLongBooks = function (books) {
-  const pagesMoreThan200 = isGreaterThan(200);
-
-  return books.filter(function (book) {
-    return pagesMoreThan200(book.pages);
-  });
+  return books.filter(book => book.pages > 200);
 };
 
 // users with incomplete profiles [{username: "alice", profileComplete: true}, {username: "bob", profileComplete: false}] => [{username: "bob", profileComplete: false}]
 const filterIncompleteProfiles = function (users) {
-  return users.filter(function (user) { return !user.profileComplete; });
+  return users.filter(user => !user.profileComplete);
 };
 
 // students with grades above 80 [{name: "John", grade: 75}, {name: "Jane", grade: 85}] => [{name: "Jane", grade: 85}]
 const filterHighGrades = function (students) {
-  const isGradeAbove80 = isGreaterThan(80);
-
-  return students.filter(function (student) {
-    return isGradeAbove80(student.grade);
-  });
+  return students.filter(student => student.grade > 80);
 };
 
 // products that are in stock [{product: "apple", inStock: true}, {product: "banana", inStock: false}] => [{product: "apple", inStock: true}]
 const filterInStockProducts = function (products) {
-  return products.filter(function (product) {
-    return product.inStock;
-  });
+  return products.filter(product => product.inStock);
 };
 
 // orders placed in the last 30 days [{orderDate: "2024-11-01"}, {orderDate: "2024-12-01"}] => [{orderDate: "2024-12-01"}]
 const filterRecentOrders = function (orders) { };
 
 // products with a price lower than the average [{name: "item1", price: 10}, {name: "item2", price: 20}, {name: "item3", price: 5}] => [{name: "item1", price: 10}, {name: "item3", price: 5}]
-const isLessThan = function (init) {
-  return function (element) {
-    return element < init;
-  };
-};
-
-const sumOfPrices = function (sumOf, product) {
-  return sumOf + product.price;
-};
+const sumOfPrices = ((sum, product) => sum + product.price);
 
 const filterBelowAveragePrice = function (products) {
-  const averagePrice = products.reduce(sumOfPrices, 0) / products.length;
-  const isLessThanAverage = isLessThan(averagePrice);
+  const sum = products.reduce(sumOfPrices, 0);
+  const averagePrice = sum / products.length;
 
-  return products.filter(function (product) {
-    return isLessThanAverage(product.price);
-  });
+  return products.filter(product => product.price < averagePrice);
 };
 
 // active users who posted in the last 7 days [{username: "alice", lastPostDate: "2024-12-01", active: true}, {username: "bob", lastPostDate: "2024-11-20", active: true}] => [{username: "alice", lastPostDate: "2024-12-01", active: true}]
